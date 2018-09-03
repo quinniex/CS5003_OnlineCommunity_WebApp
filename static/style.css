@@ -1,0 +1,253 @@
+html, body {
+  height: 100%;
+}
+
+.postedImg {
+  height: 200px;
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  transition: 0.2s;
+}
+
+.postedImg:hover {
+  transform: scale(1.5);
+}
+
+.post {
+  word-wrap: break-word;
+  border: 1px solid #40a2d3;
+  border-radius: 15px;
+  margin: 5px;
+}
+
+.tweet {
+  margin: 5%;
+  background-color: rgb(29, 161, 242);
+  color: #ffffff;
+  list-style-type: none;
+  border-radius: 5px;
+}
+
+.tweetMore {
+  color: white;
+  font-weight: bold;
+}
+
+.tweet:hover {
+  background-color: rgb(225, 229, 237);
+}
+
+.newsImage {
+  width: 100%;
+}
+
+.fa {
+  padding: 5px;
+  font-size: 100%;
+  width: 25px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50%;
+}
+
+.fa:hover {
+  opacity: 0.7;
+}
+
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+  float: right;
+}
+
+.navbar {
+  margin-bottom: 0;
+  border-radius: 0;
+}
+
+.btn-md {
+  margin-bottom: 7px;
+}
+
+/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+
+.row.content {
+  overflow: auto;
+}
+
+/* Set gray background color and 100% height */
+
+.sidenav {
+  padding-top: 20px;
+  background-color: #f1f1f1;
+  height: 100%;
+}
+
+.glyphicon {
+  margin-right: 4px !important;
+  /*override*/
+}
+
+.label{
+    margin-left: 4px !important;
+}
+
+.fa-tint {
+  margin-right: 4px !important;
+}
+
+.glyphicon-globe {
+  color: #ffffff;
+}
+
+.glyphicon-cloud {
+  color: #ffffff;
+}
+
+.panel-heading {
+  text-align: left;
+}
+
+.location {
+  background-color: #FFC143;
+  color: #ffffff;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.location p {
+  font-size: 15px;
+  font-weight: normal;
+}
+
+.temperature, .wind, .humidity {
+  background-color: #3399FF;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* .col-sm-2 {
+  text-align: left;
+  height: 100%;
+  overflow-y: auto;
+} */
+
+.col-sm-6 {
+  text-align: justify;
+  margin-top: 5px;
+}
+
+#submit, #delete {
+  float: right;
+}
+
+.btn-warning {
+  color: #000000;
+  margin-bottom: 1em;
+}
+
+.panel-info>.panel-heading-custom {
+  background: #ee7600;
+  color: #fff;
+  font-weight: bold;
+  font-stretch: expanded;
+}
+
+.btn-outline-light {
+  margin-top: 7px;
+}
+
+.btn-outline-dark {
+  margin-top: 7px;
+  margin-right: 20px;
+}
+
+.carousel-inner {
+  max-width: 900px !important;
+  max-height: 520px !important;
+}
+
+.img-responsive {
+  max-width: 1000px !important;
+  max-height: 700px !important;
+}
+
+.slidetext {
+  text-align: center;
+  font-weight: bold;
+  background-color: orange;
+  color: white;
+}
+
+.userStyle {
+  padding-right: 5px;
+  font-weight: bold;
+  color: #008000;
+}
+
+/* On small screens, set height to 'auto' for sidenav and grid */
+
+@media screen and (max-width: 767px) {
+  .sidenav {
+    height: auto;
+    padding: 15px;
+  }
+  .row.content {
+    height: auto;
+  }
+}
+
+.panel ul {
+  padding: 0px;
+  margin: 0px;
+  list-style: none;
+}
+
+#googleMap {
+  height: 400px;
+  width: auto;
+  padding-bottom: 5px;
+}
+
+#right-panel {
+  overflow-y: auto;
+}
+
+#displayPosts {
+  max-height: 915px;
+  overflow-y: auto;
+}
+
+#displayPosts .stampPosition {
+  float: right;
+}
+
+#displayPosts p {
+  text-align: center;
+  font-weight: bold;
+  font-family: 'Open Sans', sans-serif;
+}
+
+#newsItems {
+  padding: 4px 4px;
+  margin: 0px;
+  border-bottom: 1px dotted #555;
+}
+
+#newsFeedScroll {
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+#collapseNews {
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+#weatherPanel {
+  max-height: 350px;
+  overflow-y: auto;
+}

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>CS5003 - Practical 3 (Group 4)</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Favicon -->
+  <!-- Image Source: http://www.stickad.fr/510-3477-thickbox_default/autocollant-drapeau-ecosse.jpg -->
+  <link rel="icon" type="image/png" href="img/favicon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAX_0JlxjpwfEgslDLXfbiI7ax6zOGlioo&callback=initMap"></script>
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+
+  <!-- Scripts included for Client and Model fucntions for Database -->
+  <script src="model_Database.js"></script>
+  <script src="client_Database.js"></script>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+  </script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">
+          <!-- Image Source: https://upload.wikimedia.org/wikipedia/en/thumb/6/61/University_of_St_Andrews_coat_of_arms.svg/1200px-University_of_St_Andrews_coat_of_arms.svg.png -->
+          <img id="logo" src="img/logo.png" alt="Website Logo" style="width:20px;">
+        </a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+
+        <ul class="nav navbar-nav">
+          <li class="active" id="home">
+            <a href="#">Home</a>
+          </li>
+          <li id="standrews">
+            <a href="#">St Andrews</a>
+          </li>
+          <li id="cupar">
+            <a href="#">Cupar</a>
+          </li>
+          <li id="dundee">
+            <a href="#">Dundee</a>
+          </li>
+          <li id="newport">
+            <a href="#">Newport</a>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+          </li>
+          <li><button class="btn btn-outline-dark register" data-toggle="modal" data-target="#signUpModal">Register</button></li>
+          <li><button class="btn btn-outline-light signIn" data-toggle="modal" data-target="#loginModal"><span class="glyphicon glyphicon-log-in"></span>Login</button></li>
+
+        </ul>
+      </div>
+
+      <div class="modal fade" id="loginModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Content of modal -->
+
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1>Sign In</h1>
+            </div>
+            <div class="modal-body">
+              <form>
+                <label for="username">Username</label>
+
+                <input type="text" class="username2" placeholder="username">
+                <label for="password">Password</label>
+                <input type="password" class="password2" placeholder="password">
+              </form>
+              <div class="modal-footer">
+                <button type="btn btn-outline-primary" id="login" data-dismiss="modal" >Log in</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Content of modal -->
+
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1>Register Here</h1>
+            </div>
+            <div class="modal-body">
+              <form>
+                <label for="username">Username</label>
+                <input type="text" class="username1" placeholder="username">
+                <label for="password">Password</label>
+                <input type="password" class="password1" placeholder="password">
+              </form>
+              <div class="modal-footer">
+                <button type="btn btn-outline-primary" id="signUp" data-dismiss="modal">Sign up</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </nav>
+
+  <div class="container-fluid text-center">
+    <div class="row content">
+      <div class="col-sm-2 -fluid sidenav userProfile">
+        <div class="jumbotron-fluid">
+
+          <div id="currentUser">
+            <p>Current User: <p id="currentUserName"></p></p>
+          </div>
+
+        </div>
+
+        </div>
+
+      <div class="col-sm-10 homeImages">
+        <div class="container-fluid">
+          <div class="row fitText">
+            <h1> Discover more about your city !</h1>
+            <p> We have all survived the snow strom week in Scotland, a gift from the "Beast from the East". Passing through such a bad week, of lecture cancellations, snow everywhere, no taxi's and buses, we as Group 4 have created a Web Application to show
+              you latest information about your town so that you can stay updated and make wiser decisions of staying at home or visiting the beach on a sunny day..</p>
+            <p> Happy Exploring !! </p>
+          </div>
+          <div class="row">
+            <div class="col-sm-3">
+            </div>
+            <div class="col-sm-6">
+              <div id="cityPhotos" class="carousel slide" data-ride="carousel">
+                <!-- Indicators for slideshow -->
+                <ol class="carousel-indicators">
+                  <li data-target="#cityPhotos" data-slide-to="0" class="active"></li>
+                  <li data-target="#cityPhotos" data-slide-to="1"></li>
+                  <li data-target="#cityPhotos" data-slide-to="2"></li>
+                  <li data-target="#cityPhotos" data-slide-to="3"></li>
+                </ol>
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+                  <div class="item active">
+                    <div class="slidetext">Cupar</div>
+                    <!-- Image Source: http://www.welcometofife.com/mediaLibrary/images/english/25687.jpg -->
+                    <img src="img/cupar.jpg" class="img-responsive" alt="Cupar">
+                  </div>
+                  <div class="item">
+                    <div class="slidetext">Dundee</div>
+                    <!-- Image Source: https://www.humanism.scot/wp-content/uploads/2015/09/Dundee-Banner.jpg -->
+                    <img src="img/dundee.jpg" class="img-responsive" alt="Dundee">
+                  </div>
+                  <div class="item">
+                    <div class="slidetext">St Andrews</div>
+                    <!-- Image Source: https://en.wikipedia.org/wiki/St_Andrews_Cathedral#/media/File:Magbaraa.jpg -->
+                    <img src="img/standrews.jpg" class="img-responsive" alt="St Andrews">
+                  </div>
+                  <div class="item">
+                    <div class="slidetext">Newport</div>
+                    <!-- Image Source: https://marinas.com/view/marina/qpcggw_Tayport_Harbour_Tayport_SC_United_Kingdom#&gid=1&pid=4 -->
+                    <img src="img/tayport.jpg" class="img-responsive" alt="Newport">
+                  </div>
+                  <!-- Left and right controls -->
+                  <a class="left carousel-control" href="#cityPhotos" data-slide="prev">
+                          <span class="glyphicon glyphicon-chevron-left"></span>
+                          <span class="sr-only">Previous</span>
+                        </a>
+                  <a class="right carousel-control" href="#cityPhotos" data-slide="next">
+                          <span class="glyphicon glyphicon-chevron-right"></span>
+                          <span class="sr-only">Next</span>
+                        </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-3">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Comment box / form -->
+      <div class="col-sm-6 userPosts">
+        <form>
+          <div class="form-group">
+            <label for="comment">Comment:</label>
+            <textarea class="form-control" rows="3" id="postContent"></textarea>
+
+            <!-- Selection of categories -->
+            <label for="categories">Category</label>
+            <select class="form-control" id="postCategory">
+              <option value="Weather">Weather</option>
+              <option value="Lectures">Lectures</option>
+              <option value="Buses">Buses</option>
+              <option value="Taxi">Taxi</option>
+              <option value="Map">Map</option>
+              <option value="Random">Random</option>
+            </select>
+
+            <input id="imageName" type="file" onchange="previewFile()">
+
+            <!-- Button to submit posts on the news & feed (Forum) -->
+            <button type="button" class="btn btn-primary" id="submit">Post</button>
+          </div>
+        </form>
+        <br>
+        <hr>
+
+        <!-- Displaying user posts on the body of the page -->
+        <div class="panel panel-info">
+          <div class="panel-heading panel-heading-custom">
+            <i class="glyphicon glyphicon-comment"></i>
+            <b>Forum Posts</b>
+          </div>
+          <div class="panel-body" id="displayPosts">
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-4 sidenav otherApis">
+        <!-- Panel for Traffic Information - including button for map modal -->
+        <div class="panel panel-info">
+          <div class="panel-heading panel-heading-custom">
+            <i class="glyphicon glyphicon-road"></i>
+            <b>Jam Jar</b>
+          </div>
+          <div class="panel-body">For information on distances and routes click the button below to enlarge a map with options.</div>
+          <button type="button" class="btn btn-warning active" data-toggle="modal" data-target="#mapModal">
+            <i class="glyphicon glyphicon-map-marker">Map</i>
+          </button>
+          <br>
+
+        </div>
+        <!-- HTML modal for Google Maps API -->
+        <div class="modal fade large" id="mapModal" tabindex="-1" role="dialog">
+          <div class="modal-dialog">
+
+            <!-- Content of modal -->
+            <div class="modal-content">
+              <div class="modal-header">
+                Google Maps
+              </div>
+              <div class="modal-body">
+                <div id="floating-panel">
+                  <strong>Start:</strong>
+                  <select id="start"></select>
+                  <br>
+                  <strong>End:</strong>
+                  <select id="end"></select>
+                </div>
+                <div id="googleMap">
+                </div>
+                <div id="right-panel">
+                </div>
+
+                <div class="modal-footer">
+                  <button type="button" name="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-info">
+          <div class="panel-heading panel-heading-custom" data-toggle="collapse" data-target="#weatherPanel">
+            <i class="glyphicon glyphicon-cloud"></i>
+            <b>Weather</b>
+            <i class="glyphicon glyphicon-triangle-bottom"></i>
+          </div>
+          <div class="panel-body collapse" id="weatherPanel">
+            <div class="row">
+              <div class="weather-data">
+
+                <!-- to be designed -->
+
+                <div class="currentWeather">
+                  <div class="location">
+                    <span id="location">Unknown</span>
+                    <p>(Current Weather)</p>
+                  </div>
+                  <img id="icon" width="75px" src="http://openweathermap.org/img/w/10d.png" alt="current-weather-indicator" />
+                  <div class="temperature">
+                    <i class="fa fa-thermometer-three-quarters"></i> Temperature: <span id="temperature">0</span> &deg;
+                  </div>
+                  <div class="humidity">
+                    <i class="fa fa-tint"></i> Humidity: <span id="humidity">0</span>%
+                  </div>
+                  <div class="wind">
+                    <i class="fa fa-exchange"></i> Wind : <span id="wind">0</span> mph <span id="direction">N</span>
+                  </div>
+                </div>
+                <div class="weatherForecast">
+                    <div class="location">
+                        <p>Weather Forecast 5 days</p>
+                      </div>
+                    <div id="myDiv"> </div>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-info">
+          <div class="panel-heading panel-heading-custom" data-toggle="collapse" data-target="#newsFeedScroll">
+            <i class="glyphicon glyphicon-globe"></i>
+            <b id="headerNews">The latest news around Scottish weather</b>
+            <i class="glyphicon glyphicon-triangle-bottom"></i>
+
+          </div>
+          <div class="panel-body collapse" id="newsFeedScroll">
+            <ul id="newsPanel">
+              <li id="newsItems">
+                <table id="headlineFeed" cellpading="4">
+                </table>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+
+        <div class="panel panel-info">
+                  <div class="panel-heading panel-heading-custom" data-toggle="collapse" data-target="#collapseNews">
+                    <i class="glyphicon glyphicon-water"></i>
+                    <b>The Met Office's latest tweets!</b>
+                    <i class="glyphicon glyphicon-triangle-bottom"></i>
+                  </div>
+                  <div class="panel-body collapse" id='collapseNews'>
+                    <div class="row">
+                      <div id="tweetButton">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+      </div>
+    </div>
+
+  </div>
+  </div>
+
+
+
+</body>
+<script src="client.js"></script>
+<script src="client_Map.js"></script>
+<script src="client_news.js"></script>
+<script src="client_imageupload.js"></script>
+
+</html>
