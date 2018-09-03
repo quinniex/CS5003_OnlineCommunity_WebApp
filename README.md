@@ -1,5 +1,5 @@
 # CS5003_OnlineCommunity_WebApp
-## Authors - aeh21, cx8, mg256, ad298 and ahl6
+Authors - aeh21, cx8, mg256, ad298 and ahl6
 
 ## Project Details 
 
